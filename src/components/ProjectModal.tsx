@@ -47,7 +47,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 }`}>
                   {'status' in project ? project.status : ''}
                 </span>
-                <span className="text-sm text-gray-400">{'field' in project ? project.field : 'category' in project ? project.category : ''}</span>
+                <span className="text-sm text-gray-400">
+                  {(() => {
+                    if ('field' in project) return project.field;
+                    if ('category' in project) return project.category;
+                    return '';
+                  })()}
+                </span>
               </div>
               <p className="text-gray-400">{project.description}</p>
               <div className="space-y-4">
@@ -71,7 +77,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 }`}>
                   {'status' in project ? project.status : ''}
                 </span>
-                <span className="text-sm text-gray-400">{'field' in project ? project.field : 'category' in project ? project.category : ''}</span>
+                <span className="text-sm text-gray-400">
+                  {(() => {
+                    if ('field' in project) return project.field;
+                    if ('category' in project) return project.category;
+                    return '';
+                  })()}
+                </span>
               </div>
               {'publication' in project && project.publication && (
                 <p className="text-sm text-gray-300">Publication: {project.publication}</p>
