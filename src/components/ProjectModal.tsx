@@ -60,10 +60,10 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <div className="space-y-4">
                 <div>
                   <h4 className="text-sm font-medium text-white mb-2">Focus Area</h4>
-                  <p className="text-gray-400">{project.focus}</p>
+                  <p className="text-gray-400">{(project as Research).focus}</p>
                 </div>
                 <div className="grid grid-cols-1 gap-4">
-                  <img key={project.image} src={project.image} alt="Research visual" className="h-64 w-full rounded-2xl object-cover" loading="lazy" />
+                  <img key={(project as Research).image} src={(project as Research).image} alt="Research visual" className="h-64 w-full rounded-2xl object-cover" loading="lazy" />
                 </div>
               </div>
             </>
@@ -87,20 +87,20 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   })()}
                 </span>
               </div>
-              {'publication' in project && project.publication && (
-                <p className="text-sm text-gray-300">Publication: {project.publication}</p>
+              {'publication' in project && (project as Academic).publication && (
+                <p className="text-sm text-gray-300">Publication: {(project as Academic).publication}</p>
               )}
-              {'date' in project && project.date && (
-                <p className="text-sm text-gray-300">Date: {project.date}</p>
+              {'date' in project && (project as Academic).date && (
+                <p className="text-sm text-gray-300">Date: {(project as Academic).date}</p>
               )}
               <p className="text-gray-400">{project.description}</p>
               <div className="space-y-4">
                 <div>
                   <h4 className="text-sm font-medium text-white mb-2">Focus Area</h4>
-                  <p className="text-gray-400">{project.focus}</p>
+                  <p className="text-gray-400">{(project as Academic).focus}</p>
                 </div>
                 <div className="grid grid-cols-1 gap-4">
-                  <img key={project.image} src={project.image} alt="Academic visual" className="h-64 w-full rounded-2xl object-cover" loading="lazy" />
+                  <img key={(project as Academic).image} src={(project as Academic).image} alt="Academic visual" className="h-64 w-full rounded-2xl object-cover" loading="lazy" />
                 </div>
               </div>
             </>
