@@ -546,7 +546,7 @@ function ItemEditModal({ item, onSave, onCancel }: {
             <label className="block text-sm font-medium mb-2">Field</label>
             <select
               name="field"
-              value={formData.field}
+              value={('field' in formData ? formData.field : formData.category) || ''}
               onChange={handleInputChange}
               className="w-full bg-[#1a1a1f] border border-white/10 rounded px-3 py-2 text-white focus:outline-none focus:border-[#C7A86F]"
             >
