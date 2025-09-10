@@ -49,8 +49,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </span>
                 <span className="text-sm text-gray-400">
                   {(() => {
-                    if ('field' in project) return project.field;
-                    if ('category' in project) return project.category;
+                    const p = project as any;
+                    if ('field' in p) return p.field;
+                    if ('category' in p) return p.category;
                     return '';
                   })()}
                 </span>
@@ -79,8 +80,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </span>
                 <span className="text-sm text-gray-400">
                   {(() => {
-                    if ('field' in project) return project.field;
-                    if ('category' in project) return project.category;
+                    const p = project as any;
+                    if ('field' in p) return p.field;
+                    if ('category' in p) return p.category;
                     return '';
                   })()}
                 </span>
