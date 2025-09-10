@@ -150,6 +150,44 @@ export default function AdminPage() {
     }
   }
 
+  const handleDeleteResearch = async (id: string) => {
+    if (confirm('Are you sure you want to delete this research?')) {
+      try {
+        const response = await fetch(`/api/research?id=${id}`, {
+          method: 'DELETE',
+        })
+
+        if (response.ok) {
+          await loadData()
+        } else {
+          alert('Failed to delete research')
+        }
+      } catch (error) {
+        console.error('Error deleting research:', error)
+        alert('Failed to delete research')
+      }
+    }
+  }
+
+  const handleDeleteAcademic = async (id: string) => {
+    if (confirm('Are you sure you want to delete this academic?')) {
+      try {
+        const response = await fetch(`/api/academics?id=${id}`, {
+          method: 'DELETE',
+        })
+
+        if (response.ok) {
+          await loadData()
+        } else {
+          alert('Failed to delete academic')
+        }
+      } catch (error) {
+        console.error('Error deleting academic:', error)
+        alert('Failed to delete academic')
+      }
+    }
+  }
+
   const handleSaveItem = async (item: Project | Research | Academic) => {
     try {
       let endpoint = ''
