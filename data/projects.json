@@ -1,0 +1,62 @@
+[
+  {
+    "id": "p1",
+    "title": "Astra Coffee — Brand System",
+    "category": "3d",
+    "cover": "https://images.unsplash.com/photo-1512580770426-cbed71c40e94?q=80&w=1600&auto=format&fit=crop",
+    "brief": "End-to-end brand identity for a specialty coffee roastery: logotype, palette, packaging, and storefront system. Extra elements added here. ",
+    "images": [
+      "https://images.unsplash.com/photo-1483058712412-4245e9b90334?q=80&w=1600&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": "p2",
+    "title": "Monolith Lamp — 3D Product Visual",
+    "category": "3d",
+    "cover": "https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1?q=80&w=1600&auto=format&fit=crop",
+    "brief": "Photoreal 3D render exploring brushed metal, soft emissive lighting, and cinematic shadows for a concept lamp.",
+    "images": [
+      "https://images.unsplash.com/photo-1553925585-b929523b47fb?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1574701148212-8518049c7d7b?q=80&w=1600&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": "p3",
+    "title": "Harbor & Co. — Packaging Suite",
+    "category": "branding",
+    "cover": "https://images.unsplash.com/photo-1521577352947-9bb58764b69a?q=80&w=1600&auto=format&fit=crop",
+    "brief": "Premium packaging direction with tactile papers, gilded foils, and modular label grid for a boutique grocer.",
+    "images": [
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1513617339633-75ae9a3b342a?q=80&w=1600&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": "p4",
+    "title": "Nebula Chair — 3D Concept",
+    "category": "3d",
+    "cover": "https://images.unsplash.com/photo-1552919973-030017b86647?q=80&w=1600&auto=format&fit=crop",
+    "brief": "Parametric seat form with velvet microfibers; studio renders and close-up material studies for a concept chair.",
+    "images": [
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1549492423-400259a2e574?q=80&w=1600&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": "1757441781416",
+    "title": "Test project",
+    "category": "branding",
+    "cover": "",
+    "brief": "just some random description ",
+    "images": []
+  },
+  {
+    "id": "1757487144307",
+    "title": "Testing new project",
+    "category": "branding",
+    "cover": "",
+    "brief": "Just for the placeholder",
+    "images": [],
+    "image": "https://www.addictivetips.com/app/uploads/2018/06/cUrl-command.jpg"
+  }
+]
