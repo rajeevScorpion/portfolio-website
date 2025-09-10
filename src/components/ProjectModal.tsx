@@ -45,7 +45,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   project.status === 'Planning' ? 'bg-yellow-500/20 text-yellow-400' :
                   'bg-gray-500/20 text-gray-400'
                 }`}>
-                  {'status' in project ? project.status : ''}
+                  {'status' in project ? (project as Academic).status : ''}
                 </span>
                 <span className="text-sm text-gray-400">
                   {(() => {
@@ -76,7 +76,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   'status' in project && (project as Academic).status === 'Submitted' ? 'bg-yellow-500/20 text-yellow-400' :
                   'bg-gray-500/20 text-gray-400'
                 }`}>
-                  {'status' in project ? project.status : ''}
+                  {'status' in project ? (project as Academic).status : ''}
                 </span>
                 <span className="text-sm text-gray-400">
                   {(() => {
