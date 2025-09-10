@@ -45,9 +45,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   project.status === 'Planning' ? 'bg-yellow-500/20 text-yellow-400' :
                   'bg-gray-500/20 text-gray-400'
                 }`}>
-                  {project.status}
+                  {'status' in project ? project.status : ''}
                 </span>
-                <span className="text-sm text-gray-400">{project.field}</span>
+                <span className="text-sm text-gray-400">{'field' in project ? project.field : 'category' in project ? project.category : ''}</span>
               </div>
               <p className="text-gray-400">{project.description}</p>
               <div className="space-y-4">
@@ -64,19 +64,19 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             <>
               <div className="flex items-center gap-4">
                 <span className={`rounded-full px-3 py-1 text-sm font-medium ${
-                  project.status === 'Published' ? 'bg-green-500/20 text-green-400' :
-                  project.status === 'In Review' ? 'bg-blue-500/20 text-blue-400' :
-                  project.status === 'Submitted' ? 'bg-yellow-500/20 text-yellow-400' :
+                  'status' in project && project.status === 'Published' ? 'bg-green-500/20 text-green-400' :
+                  'status' in project && project.status === 'In Review' ? 'bg-blue-500/20 text-blue-400' :
+                  'status' in project && project.status === 'Submitted' ? 'bg-yellow-500/20 text-yellow-400' :
                   'bg-gray-500/20 text-gray-400'
                 }`}>
-                  {project.status}
+                  {'status' in project ? project.status : ''}
                 </span>
-                <span className="text-sm text-gray-400">{project.field}</span>
+                <span className="text-sm text-gray-400">{'field' in project ? project.field : 'category' in project ? project.category : ''}</span>
               </div>
-              {project.publication && (
+              {'publication' in project && project.publication && (
                 <p className="text-sm text-gray-300">Publication: {project.publication}</p>
               )}
-              {project.date && (
+              {'date' in project && project.date && (
                 <p className="text-sm text-gray-300">Date: {project.date}</p>
               )}
               <p className="text-gray-400">{project.description}</p>
