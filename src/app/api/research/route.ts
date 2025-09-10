@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Research } from '@/types'
-import { writeFile, readFile, exists } from 'fs/promises'
+import { writeFile, readFile, access } from 'fs/promises'
 import { join } from 'path'
 
 const DATA_FILE = join(process.cwd(), 'data', 'research.json')
 
 async function ensureDataFile() {
   const dir = join(process.cwd(), 'data')
+  
   try {
-    await writeFile(dir, '')
+    await access(dir)
   } catch (e) {
-    // Directory already exists
+    // Directory doesn't exist, but we can't create it in Vercel deployment
   }
   
   try {
