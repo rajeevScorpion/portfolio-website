@@ -71,9 +71,9 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             <>
               <div className="flex items-center gap-4">
                 <span className={`rounded-full px-3 py-1 text-sm font-medium ${
-                  'status' in project && project.status === 'Published' ? 'bg-green-500/20 text-green-400' :
-                  'status' in project && project.status === 'In Review' ? 'bg-blue-500/20 text-blue-400' :
-                  'status' in project && project.status === 'Submitted' ? 'bg-yellow-500/20 text-yellow-400' :
+                  'status' in project && (project as any).status === 'Published' ? 'bg-green-500/20 text-green-400' :
+                  'status' in project && (project as any).status === 'In Review' ? 'bg-blue-500/20 text-blue-400' :
+                  'status' in project && (project as any).status === 'Submitted' ? 'bg-yellow-500/20 text-yellow-400' :
                   'bg-gray-500/20 text-gray-400'
                 }`}>
                   {'status' in project ? project.status : ''}
