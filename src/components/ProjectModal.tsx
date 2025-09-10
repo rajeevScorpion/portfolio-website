@@ -49,7 +49,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </span>
                 <span className="text-sm text-gray-400">
                   {(() => {
-                    const p = project as any;
+                    const p = project as any; // eslint-disable-line @typescript-eslint/no-explicit-any
                     if ('field' in p) return p.field;
                     if ('category' in p) return p.category;
                     return '';
@@ -80,7 +80,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </span>
                 <span className="text-sm text-gray-400">
                   {(() => {
-                    const p = project as any;
+                    const p = project as any; // eslint-disable-line @typescript-eslint/no-explicit-any
                     if ('field' in p) return p.field;
                     if ('category' in p) return p.category;
                     return '';
