@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Plus, Edit, Trash2, Save, X, Upload, Image as ImageIcon } from 'lucide-react'
+import { Plus, Edit, Trash2, Save, X, Upload } from 'lucide-react'
 import { Project, Research, Academic } from '@/types'
 import { Shell } from '@/components/ui'
 import Link from 'next/link'
@@ -219,7 +219,7 @@ export default function AdminPage() {
             ].map((tab) => (
               <button
                 key={tab.key}
-                onClick={() => setActiveTab(tab.key as any)}
+                onClick={() => setActiveTab(tab.key as 'projects' | 'academics' | 'research')}
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                   activeTab === tab.key
                     ? 'bg-[#C7A86F] text-black'
