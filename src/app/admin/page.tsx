@@ -5,48 +5,7 @@ import { Plus, Edit, Trash2, Save, X, Upload } from 'lucide-react'
 import { Project, Research, Academic } from '@/types'
 import { Shell } from '@/components/ui'
 import Link from 'next/link'
-
-// Function to fetch projects from API
-async function fetchProjects(): Promise<Project[]> {
-  try {
-    const response = await fetch('/api/projects')
-    if (!response.ok) {
-      throw new Error('Failed to fetch projects')
-    }
-    return await response.json()
-  } catch (error) {
-    console.error('Error fetching projects:', error)
-    return []
-  }
-}
-
-// Function to fetch research from API
-async function fetchResearch(): Promise<Research[]> {
-  try {
-    const response = await fetch('/api/research')
-    if (!response.ok) {
-      throw new Error('Failed to fetch research')
-    }
-    return await response.json()
-  } catch (error) {
-    console.error('Error fetching research:', error)
-    return []
-  }
-}
-
-// Function to fetch academics from API
-async function fetchAcademics(): Promise<Academic[]> {
-  try {
-    const response = await fetch('/api/academics')
-    if (!response.ok) {
-      throw new Error('Failed to fetch academics')
-    }
-    return await response.json()
-  } catch (error) {
-    console.error('Error fetching academics:', error)
-    return []
-  }
-}
+import { fetchProjects, fetchResearch, fetchAcademics } from '@/lib/api'
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<'projects' | 'research' | 'academics'>('projects')

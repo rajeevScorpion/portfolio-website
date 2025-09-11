@@ -1,12 +1,11 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Card, Section, Tag } from '@/components/ui';
 import { Icon } from '@/components/icons';
 import { fetchAcademics } from '@/data';
 import { Academic } from '@/types';
 import { useAutoReveal } from '@/lib/utils';
-import { useEffect } from 'react';
 
 interface AcademicsPageProps {
   onOpenAcademic: (academic: Academic) => void;

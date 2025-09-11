@@ -42,21 +42,4 @@
       "https://images.unsplash.com/photo-1549492423-400259a2e574?q=80&w=1600&auto=format&fit=crop"
     ]
   },
-  {
-    "id": "1757441781416",
-    "title": "Test project",
-    "category": "branding",
-    "cover": "",
-    "brief": "just some random description ",
-    "images": []
-  },
-  {
-    "id": "1757487144307",
-    "title": "Testing new project",
-    "category": "branding",
-    "cover": "",
-    "brief": "Just for the placeholder",
-    "images": [],
-    "image": "https://www.addictivetips.com/app/uploads/2018/06/cUrl-command.jpg"
-  }
-]
+  ]

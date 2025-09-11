@@ -18,7 +18,31 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
   }, [onClose]);
 
   if (!project) return null;
-  
+
+  // Type guard functions
+  const isProject = (item: Project | Research | Academic): item is Project => {
+    return 'brief' in item && 'category' in item;
+  };
+
+  const isResearch = (item: Project | Research | Academic): item is Research => {
+    return 'focus' in item && 'field' in item && item.field.includes('AI');
+  };
+
+  const isAcademic = (item: Project | Research | Academic): item is Academic => {
+    return 'focus' in item && 'field' in item && !item.field.includes('AI');
+  };
+
+  const getFieldOrCategory = (item: Project | Research | Academic): string => {
+    if ('field' in item) return item.field;
+    if ('category' in item) return item.category;
+    return '';
+  };
+
+  const getStatus = (item: Project | Research | Academic): string => {
+    if ('status' in item) return item.status;
+    return '';
+  };
+
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/80 p-6">
       <div className="max-h-[90vh] w-full max-w-4xl overflow-auto rounded-3xl bg-[#0e0e13] ring-1 ring-white/10">
@@ -27,7 +51,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           <button onClick={onClose} className="rounded-xl bg-white/5 px-3 py-1.5 text-sm text-gray-300 ring-1 ring-white/10 hover:bg-white/10">Close</button>
         </div>
         <div className="space-y-6 p-6">
-          {'brief' in project ? (
+          {isProject(project) ? (
             <>
               <p className="text-gray-400">{project.brief}</p>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -36,34 +60,29 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 ))}
               </div>
             </>
-          ) : 'focus' in project ? (
+          ) : isResearch(project) ? (
             <>
               <div className="flex items-center gap-4">
                 <span className={`rounded-full px-3 py-1 text-sm font-medium ${
-                  project.status === 'Active' ? 'bg-green-500/20 text-green-400' :
-                  project.status === 'In Progress' ? 'bg-blue-500/20 text-blue-400' :
-                  project.status === 'Planning' ? 'bg-yellow-500/20 text-yellow-400' :
+                  getStatus(project) === 'Active' ? 'bg-green-500/20 text-green-400' :
+                  getStatus(project) === 'In Progress' ? 'bg-blue-500/20 text-blue-400' :
+                  getStatus(project) === 'Planning' ? 'bg-yellow-500/20 text-yellow-400' :
                   'bg-gray-500/20 text-gray-400'
                 }`}>
-                  {'status' in project ? (project as Academic).status : ''}
+                  {getStatus(project)}
                 </span>
                 <span className="text-sm text-gray-400">
-                  {(() => {
-                    const p = project as any; // eslint-disable-line @typescript-eslint/no-explicit-any
-                    if ('field' in p) return p.field;
-                    if ('category' in p) return p.category;
-                    return '';
-                  })()}
+                  {getFieldOrCategory(project)}
                 </span>
               </div>
               <p className="text-gray-400">{project.description}</p>
               <div className="space-y-4">
                 <div>
                   <h4 className="text-sm font-medium text-white mb-2">Focus Area</h4>
-                  <p className="text-gray-400">{(project as Research).focus}</p>
+                  <p className="text-gray-400">{project.focus}</p>
                 </div>
                 <div className="grid grid-cols-1 gap-4">
-                  <img key={(project as Research).image} src={(project as Research).image} alt="Research visual" className="h-64 w-full rounded-2xl object-cover" loading="lazy" />
+                  <img key={project.image} src={project.image} alt="Research visual" className="h-64 w-full rounded-2xl object-cover" loading="lazy" />
                 </div>
               </div>
             </>
@@ -71,36 +90,31 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             <>
               <div className="flex items-center gap-4">
                 <span className={`rounded-full px-3 py-1 text-sm font-medium ${
-                  'status' in project && (project as Academic).status === 'Published' ? 'bg-green-500/20 text-green-400' :
-                  'status' in project && (project as Academic).status === 'In Review' ? 'bg-blue-500/20 text-blue-400' :
-                  'status' in project && (project as Academic).status === 'Submitted' ? 'bg-yellow-500/20 text-yellow-400' :
+                  getStatus(project) === 'Published' ? 'bg-green-500/20 text-green-400' :
+                  getStatus(project) === 'In Review' ? 'bg-blue-500/20 text-blue-400' :
+                  getStatus(project) === 'Submitted' ? 'bg-yellow-500/20 text-yellow-400' :
                   'bg-gray-500/20 text-gray-400'
                 }`}>
-                  {'status' in project ? (project as Academic).status : ''}
+                  {getStatus(project)}
                 </span>
                 <span className="text-sm text-gray-400">
-                  {(() => {
-                    const p = project as any; // eslint-disable-line @typescript-eslint/no-explicit-any
-                    if ('field' in p) return p.field;
-                    if ('category' in p) return p.category;
-                    return '';
-                  })()}
+                  {getFieldOrCategory(project)}
                 </span>
               </div>
-              {'publication' in project && (project as Academic).publication && (
-                <p className="text-sm text-gray-300">Publication: {(project as Academic).publication}</p>
+              {project.publication && (
+                <p className="text-sm text-gray-300">Publication: {project.publication}</p>
               )}
-              {'date' in project && (project as Academic).date && (
-                <p className="text-sm text-gray-300">Date: {(project as Academic).date}</p>
+              {project.date && (
+                <p className="text-sm text-gray-300">Date: {project.date}</p>
               )}
               <p className="text-gray-400">{project.description}</p>
               <div className="space-y-4">
                 <div>
                   <h4 className="text-sm font-medium text-white mb-2">Focus Area</h4>
-                  <p className="text-gray-400">{(project as Academic).focus}</p>
+                  <p className="text-gray-400">{project.focus}</p>
                 </div>
                 <div className="grid grid-cols-1 gap-4">
-                  <img key={(project as Academic).image} src={(project as Academic).image} alt="Academic visual" className="h-64 w-full rounded-2xl object-cover" loading="lazy" />
+                  <img key={project.image} src={project.image} alt="Academic visual" className="h-64 w-full rounded-2xl object-cover" loading="lazy" />
                 </div>
               </div>
             </>
